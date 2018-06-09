@@ -1,0 +1,28 @@
+{
+    "title": "Vocaboli di inglese",
+    "author": "DaniPani",
+    "timespan": 2234444,
+    "visibility": "read|write",
+    "cards": [{
+        "id": "0",
+        "text": "voluptate nisi consequat adipisicing eu",
+        "definition": "mollit non cillum irure reprehenderit"
+      },
+      {
+        "id": "1",
+        "text": "minim sit sint aliqua voluptate",
+        "definition": "et anim consectetur et mollit"
+      },
+      {
+        "id": "2",
+        "text": "occaecat ea nisi exercitation id",
+        "definition": "nulla ea aliqua minim aliqua"
+      },
+      {
+        "id": "3",
+        "text": "culpa proident eiusmod aute nisi",
+        "definition": "nostrud minim nostrud aliqua laboris"
+      }
+  
+    ]
+  }
