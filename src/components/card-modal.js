@@ -17,11 +17,9 @@ class CardModal extends LitElement {
       height: 100%;
       opacity: 0.7;
       background-color: #333;
-      visibility: var(--modal-visibility, hidden)
     }
 
     .modal-content {
-      visibility: var(--modal-visibility, hidden);
       position: fixed;
       top: 50%;
       left: 50%;
