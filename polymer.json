@@ -10,13 +10,12 @@
     "src/**/*"
   ],
   "entrypoint": "index.html",
-  "shell": "src/cards/card-view.js",
+  "shell": "src/card-view.js",
   "fragments": [
     "src/components/card-input.js",
     "src/components/card-modal.js"
   ],
   "builds": [{
-    "bundle": true,
     "js": {
       "minify": true
     },

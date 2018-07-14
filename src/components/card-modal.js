@@ -15,8 +15,7 @@ class CardModal extends LitElement {
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: 0.7;
-      background-color: #333;
+      background-color: rgba(0, 0, 0, 0.5);
     }
 
     .modal-content {
@@ -48,8 +47,6 @@ class CardModal extends LitElement {
     }
 
     header {
-      position: relative;
-      display: block;
       border-bottom: 1px solid #eee;
     }
 

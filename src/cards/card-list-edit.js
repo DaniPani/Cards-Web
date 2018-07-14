@@ -1,9 +1,11 @@
 import {LitElement, html} from '@polymer/lit-element';
 import {repeat} from 'lit-html/lib/repeat'
 
-class CardList extends LitElement {
+import '../components/card-input.js'
 
-  static get properties() { return { cards: Array }}
+class CardListEdit extends LitElement {
+
+  static get properties() { return { cards: Array}}
 
   _render({cards = []}) {
     return html `
@@ -19,11 +21,12 @@ class CardList extends LitElement {
   </style>
     ${repeat(cards, card => card.id, card => html`    
     <div class="card">
-      <h1>${card.text}</h1><hr><h1>${card.definition}</h1>
+      <card-input text="${card.text}" on-change="${e => card.text = e.detail.text}"></card-input>
+      <card-input text="${card.definition}" on-change="${e => card.definition = e.detail.text}"></card-input>
     </div>`)
-  }`
+    }`
   }
 
 }
 
-customElements.define('card-list', CardList);
+customElements.define('card-list-edit', CardListEdit);

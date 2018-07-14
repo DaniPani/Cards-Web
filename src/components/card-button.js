@@ -16,7 +16,6 @@ class CardButton extends LitElement {
         border: 0.1em solid #333;
         margin:0 0.3em 0.3em 0;
         border-radius:0.12em;
-        box-sizing: border-box;
         text-decoration:none;
         text-align:center;
         transition: all 0.2s;
