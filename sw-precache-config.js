@@ -2,7 +2,7 @@ module.exports = {
   staticFileGlobs: [
     'manifest.json',
     'src/**/*',
-    'node_modules/**/.js'
+    'node_modules/**/*.js'
   ],
   runtimeCaching: [
     {
