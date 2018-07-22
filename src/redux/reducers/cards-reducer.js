@@ -1,19 +1,14 @@
 import {
-    CARDSLOADING,
     CARDSLOADED,
     CARDSADDED,
     CARDSSAVED
 } from '../actions/card-actions'
 
 
-export default function (state = false, action) {
+export default function (state = {isLoading: true}, action) {
     switch (action.type) {
         case CARDSLOADED:
-                return Object.assign({}, action.payload.data)
-        
-        case CARDSLOADING:
-                return {'isLoading': action.payload.isLoading}
-
+                return Object.assign({}, action.payload.data, {isLoading: false})
         case CARDSADDED:
                 return Object.assign({}, state, {cards:[...state.cards, action.payload.cards]})
         case CARDSSAVED:

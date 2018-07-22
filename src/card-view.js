@@ -32,13 +32,12 @@ class CardView extends connect(store)(LitElement) {
       case '/edit/':
         await import ('./cards/card-list-edit.js')
         return html`
-          <h2 class="title">${this.data.title}</h2>
-          <card-button href="/" onclick="${e => store.dispatch(cardsSaved(this.data.cards))}">SAVE</card-button>
+          <h2 class="title">${this.data.title || "..."}</h2>
+          <card-button href="/" onclick="${() => store.dispatch(cardsSaved(this.data.cards))}">SAVE</card-button>
           <card-button class="inverted" href="/add/">ADD</card-button>
           <card-button class="inverted" href="/remove/">REMOVE/MOVE</card-button>
           <card-list-edit cards="${this.data.cards}"></card-list-edit>`
       case '/add/':
-        await import ('./components/card-modal.js')
         await import ('./components/card-input.js')
         return this.ModalTemplateAdd
       default:
@@ -65,15 +64,21 @@ class CardView extends connect(store)(LitElement) {
 
   get ModalTemplateAdd(){
     return html`
-    <card-modal title="ADD CARDS:" href="/edit/">
-    <div slot="content">
+    <h2 class="title">${this.data.title}</h2>
+    <card-button class="inverted" href="/edit/">EDIT</card-button>
+    <card-button class="inverted" href="/save/" onclick="${() => store.dispatch(cardsSaved(this.data.cards))}">SAVE</card-button>
+    <h1>ADD CARDS:</h1>
+    <hr>
+    <div>
       <p>Word:</p>
         <card-input placeholder="Word"></card-input>
         <p>Definition:</p>
         <card-input placeholder="Definition"></card-input>
     </div>
-    <card-button slot="footer" on-click="${e => this.addCard()}">ADD</card-button>
-  </card-modal>`
+    <card-button on-click="${e => this.addCard()}">ADD</card-button>
+    <h1>ADD MORE:</h1>
+    <hr>
+    `
   }
 
   _render() {

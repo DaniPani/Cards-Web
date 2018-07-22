@@ -1,12 +1,3 @@
-export const CARDSLOADING = 'CARDSLOADING';
-
-export function cardsLoading(isLoading) {
-  return {
-    type: CARDSLOADING,
-    payload: {isLoading}
-  }
-}
-
 export const CARDSLOADED = 'CARDSLOADED';
 
 export function cardsLoaded(data) {
@@ -20,9 +11,7 @@ export const CARDSFETCH = 'CARDSFETCH';
 
 export function cardsFetch() {
   return async dispatch => {
-      await dispatch(cardsLoading(true))
       let response = await fetch('/data/card-tiny.json')
-      await dispatch(cardsLoading(false))
       let data = await response.json()
       await dispatch(cardsLoaded(data))
   }

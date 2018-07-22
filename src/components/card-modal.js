@@ -82,7 +82,7 @@ class CardModal extends LitElement {
     <label for="modal" class="modal-bg"></label>
     <div class="modal-content">
       <header>
-          <h1>${this.title}</h1>
+          <h1>${title}</h1>
       </header>
       <article class="content">
         <slot name="content"></slot>
