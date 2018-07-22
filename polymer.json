@@ -1,30 +1,30 @@
 {
-  "npm": false,
   "lint": {
     "rules": [
       "polymer-3"
     ]
   },
   "sources": [
-    "data/**/*",
-    "src/**/*"
+    "data/**/*"
   ],
-  "entrypoint": "index.html",
   "shell": "src/card-view.js",
-  "fragments": [
-    "src/components/card-input.js",
-    "src/components/card-modal.js"
-  ],
   "builds": [{
-    "js": {
+    "name":"default",
+    "addServiceWorker": true,
+    "swPrecacheConfig": "sw-precache-config.js",
+    "html": {
       "minify": true
     },
     "css": {
       "minify": true
     },
-    "html": {
+    "js": {
       "minify": true
-    },
-    "addServiceWorker": true
-  }]
+    }
+  }],
+  "entrypoint": "index.html",
+  "extraDependencies": [
+    "manifest.json",
+    "node_modules/@webcomponents/webcomponentsjs/**/*.js"
+  ]
 }
