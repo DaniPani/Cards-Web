@@ -8,7 +8,7 @@ class CardInput extends LitElement {
     return html`
     <style>
         input {
-        font-family: auto;
+        font-family: 'Bitter';
         font-size:2em;
         font-weight: bold;
         color: #333;
