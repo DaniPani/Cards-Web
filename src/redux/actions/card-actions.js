@@ -34,3 +34,12 @@ export function cardsSaved(cards = []) {
     payload: {cards}
   }
 }
+
+export const CARDSREMOVED = 'CARDSREMOVED';
+
+export function cardsRemoved(index = 0) {
+  return {
+    type: CARDSREMOVED,
+    payload: {index}
+  }
+}

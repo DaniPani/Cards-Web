@@ -1,7 +1,8 @@
 import {
     CARDSLOADED,
     CARDSADDED,
-    CARDSSAVED
+    CARDSSAVED,
+    CARDSREMOVED
 } from '../actions/card-actions'
 
 
@@ -13,6 +14,9 @@ export default function (state = {isLoading: true}, action) {
                 return Object.assign({}, state, {cards:[...state.cards, action.payload.cards]})
         case CARDSSAVED:
                 return Object.assign({}, state, {cards : [...action.payload.cards]})
+        case CARDSREMOVED:
+                state.cards.splice(action.payload.index, 1)
+                return Object.assign({}, state, {cards : [...state.cards]})
 
         default:
             return Object.assign({}, state)
