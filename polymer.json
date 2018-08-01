@@ -7,7 +7,7 @@
   "sources": [
     "data/**/*"
   ],
-  "shell": "src/card-view.js",
+  "shell": "src/view/card-view.js",
   "builds": [{
     "name":"default",
     "addServiceWorker": true,
