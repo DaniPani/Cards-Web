@@ -9,7 +9,7 @@
   ],
   "shell": "src/view/card-view.js",
   "builds": [{
-    "name":"default",
+    "name": "default",
     "addServiceWorker": true,
     "swPrecacheConfig": "sw-precache-config.js",
     "html": {
@@ -20,6 +20,18 @@
     },
     "js": {
       "minify": true
+    }
+  }, {
+    "name": "development",
+    "addServiceWorker": false,
+    "html": {
+      "minify": false
+    },
+    "css": {
+      "minify": false
+    },
+    "js": {
+      "minify": false
     }
   }],
   "entrypoint": "index.html",

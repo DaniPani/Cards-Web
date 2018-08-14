@@ -3,12 +3,15 @@
   "dependencies": {
     "@polymer/lit-element": "^0.5.1",
     "@polymer/polymer": "^3.0.0",
+    "bell": "^9.3.1",
+    "hapi": "^17.0.1",
+    "inert": "^5.1.0",
     "pwa-helpers": "^0.8.2",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "polymer serve -H 3000"
+    "serve": "nodemon --ignore build/ --exec 'polymer build --name development & node server.js'"
   },
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.0.0",
