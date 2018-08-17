@@ -3,7 +3,7 @@ import {LitElement, html} from '@polymer/lit-element';
 
 class GoogleSign extends LitElement {
 
-  static get properties() { return { apiKey: String, clientId: String, scope: String, isSignedIn: Boolean, signInText: String, signedInText: String}}
+  static get properties() { return { apiKey: String, clientId: String, scope: String, discoveryDocs: Array, isSignedIn: Boolean, signInText: String, signedInText: String}}
 
   constructor(){
     super()
@@ -11,7 +11,8 @@ class GoogleSign extends LitElement {
       await gapi.client.init({
         apiKey: this.apiKey,
         clientId: this.clientId,
-        scope: this.scope
+        scope: this.scope,
+        discoveryDocs: this.discoveryDocs
       })
       await gapi.auth2.getAuthInstance().isSignedIn.listen(this._signInHandler.bind(this))
       this.isSignedIn = gapi.auth2.getAuthInstance().isSignedIn.get()
