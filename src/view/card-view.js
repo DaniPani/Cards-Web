@@ -14,12 +14,11 @@ import './profile-view'
 
 class CardView extends connect(store)(LitElement) {
 
-  static get properties() { return { location: String, data: Object, user: Object}}
+  static get properties() { return { location: String, data: Object}}
 
   // Redux
   _stateChanged(state) {
     this.data = state.data
-    this.user = state.user
   }
 
   // Router
