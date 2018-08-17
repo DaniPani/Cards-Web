@@ -16,30 +16,3 @@ export function cardsFetch() {
       await dispatch(cardsLoaded(data))
   }
 }
-
-export const CARDSADDED = 'CARDSADDED';
-
-export function cardsAdded(cards = {}) {
-  return {
-    type: CARDSADDED,
-    payload: {cards}
-  }
-}
-
-export const CARDSSAVED = 'CARDSSAVED';
-
-export function cardsSaved(cards = []) {
-  return {
-    type: CARDSSAVED,
-    payload: {cards}
-  }
-}
-
-export const CARDSREMOVED = 'CARDSREMOVED';
-
-export function cardsRemoved(index = 0) {
-  return {
-    type: CARDSREMOVED,
-    payload: {index}
-  }
-}
