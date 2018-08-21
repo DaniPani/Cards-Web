@@ -36,17 +36,6 @@ const init = async () => {
             }
         }
     });
-
-    server.route({
-        method: 'GET',
-        path: '/data/{param*}',
-        handler: {
-            directory: {
-                path: './data/',
-            }
-        }
-    });
-
     
     server.route({
         method: 'GET',

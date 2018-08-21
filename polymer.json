@@ -4,9 +4,6 @@
       "polymer-3"
     ]
   },
-  "sources": [
-    "data/**/*"
-  ],
   "shell": "src/view/card-view.js",
   "builds": [{
     "name": "default",
