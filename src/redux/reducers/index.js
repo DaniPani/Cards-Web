@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import cardsReducer from './cards-reducer'
 import userReducer from './user-reducer'
-import driveReducer from './drive-reducer'
+import listReducer from './list-reducer'
 
 const allReducers = {
     data: cardsReducer,
     user: userReducer,
-    drive: driveReducer
+    list: listReducer
 }
 
 const rootReducer = combineReducers(allReducers)

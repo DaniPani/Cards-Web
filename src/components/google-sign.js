@@ -14,6 +14,7 @@ class GoogleSign extends LitElement {
         scope: this.scope,
         discoveryDocs: this.discoveryDocs
       })
+      this.dispatchEvent(new CustomEvent('loaded', {detail: gapi.auth2.getAuthInstance().isSignedIn.get()}))
       await gapi.auth2.getAuthInstance().isSignedIn.listen(this._signInHandler.bind(this))
       this.isSignedIn = gapi.auth2.getAuthInstance().isSignedIn.get()
     })

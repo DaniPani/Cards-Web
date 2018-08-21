@@ -1,3 +1,12 @@
+export const CARDSCHOSED = 'CARDSCHOSED';
+
+export function cardsChosed() {
+  return {
+    type: CARDSCHOSED,
+    payload: {}
+  }
+}
+
 export const CARDSLOADED = 'CARDSLOADED';
 
 export function cardsLoaded(data) {
@@ -7,12 +16,11 @@ export function cardsLoaded(data) {
   }
 }
 
-export const CARDSFETCH = 'CARDSFETCH';
-
-export function cardsFetch() {
+export function cardsFetchDrive(title, spreadsheetId) {
   return async dispatch => {
-      let response = await fetch('/data/card-tiny.json')
-      let data = await response.json()
-      await dispatch(cardsLoaded(data))
+      let response = await gapi.client.sheets.spreadsheets.values.get({spreadsheetId, range: 'A2:B1000'})
+      if(response.status == 200){
+        await dispatch(cardsLoaded({title, cards : response.result.values, spreadsheetId}))
+      }
   }
 }

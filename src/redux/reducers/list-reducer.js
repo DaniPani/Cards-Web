@@ -1,12 +1,12 @@
 import {
-    DRIVELISTLOADED
-} from '../actions/drive-action'
+    LISTLOADED
+} from '../actions/list-action'
 
 
 export default function (state = {isLoading: true}, action) {
     switch (action.type) {
-        case DRIVELISTLOADED:
-                return Object.assign([], action.payload.list)
+        case LISTLOADED:
+                return Object.assign({}, {files: action.payload.list})
         default:
             return Object.assign({}, state)
     }

@@ -2,11 +2,11 @@ import {LitElement, html} from '@polymer/lit-element';
 
 class CardButton extends LitElement {
 
-  static get properties() { return { href: String}}
+  static get properties() { return { href: String, target: String}}
   /**
    * @param  {string} href The redirect link
    */
-  _render({href}) {
+  _render({href, target = ""}) {
     return html`
     <style>
       a {
@@ -36,7 +36,7 @@ class CardButton extends LitElement {
         }
       }
     </style>
-    <a href="${href}"><slot></slot></a>
+    <a href="${href}" target="${target}"><slot></slot></a>
     `
   }
 }

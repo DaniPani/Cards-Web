@@ -19,7 +19,7 @@ class CardList extends LitElement {
   </style>
     ${repeat(cards, card => card.id, card => html`    
     <div class="card">
-      <h1>${card.text}</h1><hr><h1>${card.definition}</h1>
+      <h1>${card[0]}</h1><hr><h1>${card[1]}</h1>
     </div>`)
   }`
   }

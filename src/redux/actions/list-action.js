@@ -1,21 +1,19 @@
-export const DRIVELISTFETCH = 'DRIVELISTFETCH';
-
-export function driveListFetch() {
+export function listFetchDrive() {
   return async dispatch => {
       let response = await gapi.client.drive.files.list({
           'q': '"1vcrEWntFMeBdJyRoOArepg-j8G7ZkCln" in parents and mimeType = "application/vnd.google-apps.spreadsheet"'
       })
       if(!response.result.incompleteSearch){
-        await dispatch(driveListLoaded(response.result.files))
+        await dispatch(listLoaded(response.result.files))
       }
   }
 }
 
-export const DRIVELISTLOADED = 'DRIVELISTLOADED'
+export const LISTLOADED = 'LISTLOADED'
 
-export function driveListLoaded(list = []) {
+export function listLoaded(list = []) {
   return {
-    type: DRIVELISTLOADED,
+    type: LISTLOADED,
     payload: {list}
   }
 }
