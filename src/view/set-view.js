@@ -14,7 +14,6 @@ class SetView extends connect(store)(LitElement) {
 
   // Redux
   _stateChanged(state) {
-    debugger
     this.data = state.data
   }
 
@@ -22,6 +21,7 @@ class SetView extends connect(store)(LitElement) {
   _template() {
     if(!this.data.fileSelected){
       window.location = '/profile/'
+      return
     }
 
     if(this.data.isLoading){

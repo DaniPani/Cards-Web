@@ -3,10 +3,10 @@ import {
 } from '../actions/card-actions'
 
 
-export default function (state = {isLoading: true, fileSelected: false}, action) {
+export default function (state = {isLoading: true}, action) {
     switch (action.type) {
         case CARDSLOADED:
-            return Object.assign(state, action.payload.data, {isLoading: false})
+            return {...state, ...action.payload.data, isLoading: false}
 
         case CARDSCHOSED:
                 return Object.assign(state, {fileSelected: true})

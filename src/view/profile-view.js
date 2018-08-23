@@ -37,7 +37,7 @@ class ProfileView extends connect(store)(LitElement) {
       return html`<spinner-round></spinner-round>`
     } else {
       return this.list.files.map(file => 
-        html`<h2><a href="/set/" on-click="${e => {store.dispatch(cardsChosed()); store.dispatch(cardsFetchDrive(file.name, file.id))}}">${file.name}</a></h2><hr>`)
+        html`<h2><a href="/set/" on-click="${e => store.dispatch(cardsFetchDrive(file.name, file.id))}">${file.name}</a></h2><hr>`)
     }
   }
 
