@@ -2,9 +2,6 @@ import {LitElement, html} from '@polymer/lit-element';
 
 import {installRouter} from 'pwa-helpers/router'
 
-import './profile-view'
-import './set-view'
-import './home-view'
 import './auto-auth'
 
 class CardRouter extends LitElement {
@@ -19,15 +16,19 @@ class CardRouter extends LitElement {
   _render() {
     switch (this.location) {
       case "/set/":
-      return html`<set-view></set-view>`
+        import('./set-view')
+        return html`<set-view></set-view>`
 
       case "/profile/":
+        import('./profile-view')
         return html`<profile-view></profile-view>`
 
       case "/":
+        import('./home-view')
         return html`<home-view></home-view>`
 
       case "":
+        import('./home-view')
         return html`<home-view></home-view>`
 
       default:
