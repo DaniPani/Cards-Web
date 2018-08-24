@@ -36,11 +36,12 @@ class SetView extends connect(store)(LitElement) {
         ${this.data.cards.length? html`<card-list cards="${this.data.cards}"></card-list>` : html`<h3 class="center">- Oops there are no cards -</h3>`}`
   }
 
-  async _editListener(){
-    let response = await gapi.client.sheets.spreadsheets.get({spreadsheetId:this.data.spreadsheetId})
-    if(response.status == 200){
-      this.shadowRoot.querySelector('.edit').href = response.result.spreadsheetUrl
-    }
+  async _didRender(){
+    if(!this.data.isLoading){}
+      let response = await gapi.client.sheets.spreadsheets.get({spreadsheetId:this.data.spreadsheetId})
+      if(response.status == 200){
+        this.shadowRoot.querySelector('.edit').href = response.result.spreadsheetUrl
+      }
   }
 
   _render() {
