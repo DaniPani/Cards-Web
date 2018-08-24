@@ -1,5 +1,5 @@
 import {LitElement, html} from '@polymer/lit-element'
-import {connect} from 'pwa-helpers'
+import {connect} from 'pwa-helpers/connect-mixin'
 
 import store from '../redux/store'
 
