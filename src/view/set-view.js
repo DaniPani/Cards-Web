@@ -37,11 +37,12 @@ class SetView extends connect(store)(LitElement) {
   }
 
   async _didRender(){
-    if(!this.data.isLoading){}
+    if(this.data.spreadsheetId && !this.isLoading){
       let response = await gapi.client.sheets.spreadsheets.get({spreadsheetId:this.data.spreadsheetId})
       if(response.status == 200){
         this.shadowRoot.querySelector('.edit').href = response.result.spreadsheetUrl
       }
+    }
   }
 
   _render() {
