@@ -16,6 +16,15 @@ export function cardsLoaded(data) {
   }
 }
 
+export function cardsFetch(title, spreadsheetId, provider) {
+  return async dispatch => {
+    switch(provider){
+      case 'GOOGLE':
+        return dispatch(cardsFetchDrive(title, spreadsheetId))
+    }
+  }
+}
+
 export function cardsFetchDrive(title, spreadsheetId) {
   return async dispatch => {
       await dispatch(cardsChosed())

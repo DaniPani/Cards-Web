@@ -3,11 +3,9 @@ import {connect} from 'pwa-helpers/connect-mixin'
 
 import store from '../redux/store'
 
-import {listFetchDrive} from '../redux/actions/list-action'
-import {cardsFetchDrive} from '../redux/actions/card-actions'
+import {listFetch} from '../redux/actions/list-action'
+import {cardsFetch} from '../redux/actions/card-actions'
 
-import '../components/google-sign'
-import '../components/card-button'
 import '../components/spinner-round'
 
 class ProfileView extends connect(store)(LitElement) {
@@ -33,12 +31,12 @@ class ProfileView extends connect(store)(LitElement) {
   _listTemplate(){
     if(this.list.isLoading){
       if(this.user.auth2){
-        store.dispatch(listFetchDrive())
+        store.dispatch(listFetch('1vcrEWntFMeBdJyRoOArepg-j8G7ZkCln', 'GOOGLE'))
       }
       return html`<spinner-round></spinner-round>`
     } else {
       return this.list.files.map(file => 
-        html`<h2><a href="/set/" on-click="${e => store.dispatch(cardsFetchDrive(file.name, file.id))}">${file.name}</a></h2><hr>`)
+        html`<h2><a href="/set/" on-click="${e => store.dispatch(cardsFetch(file.name, file.id, 'GOOGLE'))}">${file.name}</a></h2><hr>`)
     }
   }
 
