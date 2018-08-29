@@ -10,11 +10,12 @@ import '../cards/card-list'
 
 class SetView extends connect(store)(LitElement) {
 
-  static get properties() { return {data: Object}}
+  static get properties() { return {data: Object, provider: String}}
 
   // Redux
   _stateChanged(state) {
     this.data = state.data
+    this.provider = state.provider
   }
 
 

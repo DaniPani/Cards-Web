@@ -10,13 +10,13 @@ import '../components/spinner-round'
 
 class ProfileView extends connect(store)(LitElement) {
 
-  static get properties() { return { list: Array, user: Object}}
+  static get properties() { return { list: Array, user: Object, provider: String}}
 
   // Redux
   _stateChanged(state) {
     this.user = state.user
     this.list = state.list
-
+    this.provider = state.provider
   }
 
   async _template(){
@@ -31,12 +31,12 @@ class ProfileView extends connect(store)(LitElement) {
   _listTemplate(){
     if(this.list.isLoading){
       if(this.user.auth2){
-        store.dispatch(listFetch('1vcrEWntFMeBdJyRoOArepg-j8G7ZkCln', 'GOOGLE'))
+        store.dispatch(listFetch('1vcrEWntFMeBdJyRoOArepg-j8G7ZkCln', this.provider.providerName))
       }
       return html`<spinner-round></spinner-round>`
     } else {
       return this.list.files.map(file => 
-        html`<h2><a href="/set/" on-click="${e => store.dispatch(cardsFetch(file.name, file.id, 'GOOGLE'))}">${file.name}</a></h2><hr>`)
+        html`<h2><a href="/set/" on-click="${e => store.dispatch(cardsFetch(file.name, file.id, this.provider.providerName))}">${file.name}</a></h2><hr>`)
     }
   }
 
