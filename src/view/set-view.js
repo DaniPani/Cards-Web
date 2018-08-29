@@ -46,7 +46,7 @@ class SetView extends connect(store)(LitElement) {
     }
   }
 
-  _render() {
+  render() {
     return html`
       <style>
         .title {

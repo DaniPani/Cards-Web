@@ -24,14 +24,15 @@ class GoogleSign extends LitElement {
     this.isSignedIn = isSignedIn
   }
 
-  _render({isSignedIn = false, signedInText, signInText}) {
-    if(isSignedIn){
+  render() {
+    if(this.isSignedIn){
       this.dispatchEvent(new CustomEvent('login', {detail: gapi.auth2.getAuthInstance()}))
-      return html`<span>${signedInText}</span>`
+      return html`<span>${this.signedInText}</span>`
     } else {
-      return html`<span on-click="${e => gapi.auth2.getAuthInstance().signIn()}">${signInText}</span>`
+      return html`<span @click="${e => gapi.auth2.getAuthInstance().signIn()}">${this.signInText}</span>`
     }
   }
+
 }
 
 customElements.define('google-sign', GoogleSign);

@@ -24,7 +24,7 @@ class AutoAuth extends LitElement {
   }
 
   render() {
-    return html`<google-sign @loaded=${e => this._loadedHandler(e)} @login=${e => this._loginHandler(e)} apiKey=${GoogleApiKey} clientId=${GoogleClientId} scope="profile https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive" .discoveryDocs=${["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"]}></google-sign>`
+    return html`<google-sign @loaded=${e => {this._loadedHandler(e)}} @login=${e => this._loginHandler(e)} apiKey=${GoogleApiKey} clientId=${GoogleClientId} scope="profile https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive" .discoveryDocs=${["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"]}></google-sign>`
   }
 }
 

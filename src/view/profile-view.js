@@ -40,7 +40,7 @@ class ProfileView extends connect(store)(LitElement) {
     }
   }
 
-  _render() {
+  render() {
     return html`
       <style>
         .title {

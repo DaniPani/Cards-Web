@@ -1,7 +1,7 @@
 {
   "name": "cards-web",
   "dependencies": {
-    "@polymer/lit-element": "^0.5.1",
+    "@polymer/lit-element": "^0.6.0-dev.5",
     "@polymer/polymer": "^3.0.0",
     "bell": "^9.3.1",
     "hapi": "^17.0.1",

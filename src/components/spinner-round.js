@@ -2,7 +2,7 @@ import {LitElement, html} from '@polymer/lit-element';
 
 class SpinnerRound extends LitElement {
 
-    _render() {
+    render() {
         return html`
             <style>
         .lds-ripple {
