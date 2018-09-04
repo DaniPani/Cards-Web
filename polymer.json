@@ -4,36 +4,12 @@
       "polymer-3"
     ]
   },
-  "shell": "src/view/card-view.js",
-  "builds": [{
-    "name": "default",
-    "addServiceWorker": true,
-    "swPrecacheConfig": "sw-precache-config.js",
-    "html": {
-      "minify": true
-    },
-    "css": {
-      "minify": true
-    },
-    "js": {
-      "minify": true
-    }
-  }, {
-    "name": "development",
-    "addServiceWorker": false,
-    "html": {
-      "minify": false
-    },
-    "css": {
-      "minify": false
-    },
-    "js": {
-      "minify": false
-    }
-  }],
+  "shell": "src/view/router.js",
   "entrypoint": "index.html",
   "extraDependencies": [
-    "manifest.json",
-    "node_modules/@webcomponents/webcomponentsjs/**/*.js"
-  ]
+      "manifest.json",
+      "config.js"
+  ],
+  "moduleResolution": "node",
+  "npm": true
 }

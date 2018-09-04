@@ -11,10 +11,12 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "serve": "nodemon --ignore build/ --exec 'polymer build --name development & node server.js'"
+    "build-dev": "gulp",
+    "serve-dev": "nodemon server.js -w server.js"
   },
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.0.0",
+    "gulp": "4.0.0",
     "redux-devtools-extension": "^2.13.2",
     "wct-browser-legacy": "^1.0.0"
   }
