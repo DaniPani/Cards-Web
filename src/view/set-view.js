@@ -10,42 +10,30 @@ import '../cards/card-list'
 
 class SetView extends connect(store)(LitElement) {
 
-  static get properties() { return {data: Object, provider: String}}
+  static get properties() { return {cards: Object}}
 
   // Redux
   _stateChanged(state) {
-    this.data = state.data
-    this.provider = state.provider
+    if(!state.cards.FILESELECTED){
+      return window.location = '/profile/'
+    }
+    this.cards = state.cards
   }
 
 
   _template() {
-    if(!this.data.fileSelected){
-      window.location = '/profile/'
-      return
-    }
-
-    if(this.data.isLoading){
+    if(this.cards.ISLOADING){
       return html`<spinner-round></spinner-round>`
     }
 
     return html`
-        <h2 class="title">${this.data.title  || "..."}}</h2>
+        <h2 class="title">${this.cards.title}</h2>
         <card-button href="/profile/">BACK</card-button>
-        <card-button class="edit" target="_blank">EDIT</card-button>
+        <card-button class="edit" target="_blank" href="${this.cards.editUrl}">EDIT</card-button>
         <card-button>STUDY</card-button>
-        ${this.data.cards.length? html`<card-list cards="${this.data.cards}"></card-list>` : html`<h3 class="center">- Oops there are no cards -</h3>`}`
+        ${this.cards.words.length? html`<card-list .cards=${this.cards.words}></card-list>` : html`<h3 class="center">- Oops there are no cards -</h3>`}`
   }
-
-  async _didRender(){
-    if(this.data.spreadsheetId && !this.isLoading){
-      let response = await gapi.client.sheets.spreadsheets.get({spreadsheetId:this.data.spreadsheetId})
-      if(response.status == 200){
-        this.shadowRoot.querySelector('.edit').href = response.result.spreadsheetUrl
-      }
-    }
-  }
-
+  
   render() {
     return html`
       <style>

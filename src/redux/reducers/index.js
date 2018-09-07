@@ -4,7 +4,7 @@ import userReducer from './user-reducer'
 import listReducer from './list-reducer'
 
 const allReducers = {
-    data: cardsReducer,
+    cards: cardsReducer,
     user: userReducer,
     list: listReducer
 }
