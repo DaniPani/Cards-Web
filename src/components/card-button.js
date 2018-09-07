@@ -33,7 +33,7 @@ class CardButton extends LitElement {
         }
       }
     </style>
-    <a href=${this.href} target=${this.target}><slot></slot></a>
+    <a href=${this.href} target=${this.target ? this.target : ``}><slot></slot></a>
     `
   }
 }
