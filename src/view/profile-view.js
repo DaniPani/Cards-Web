@@ -3,8 +3,8 @@ import {connect} from 'pwa-helpers/connect-mixin'
 
 import store from '../redux/store'
 
-import {listFetch} from '../redux/actions/list-action'
 import {cardsFetch} from '../redux/actions/card-actions'
+import {signIn} from '../redux/actions/user-actions'
 
 import '../components/spinner-round'
 
@@ -20,19 +20,18 @@ class ProfileView extends connect(store)(LitElement) {
   }
 
   async _template(){
-    if(this.user.auth2){
+    if(this.user.ISLOGGEDIN){
         return html`
-          <h1 class="title">Hi ${this.user.auth2.currentUser.get().getBasicProfile().getGivenName()},</h1>
+          <h1 class="title">Hi ${this.user.name},</h1>
           <h2 class="center">YOUR SETS</h2>
           <hr>
           ${this._listTemplate()}`
+      } else {
+        return html`<button @click=${e => store.dispatch(signIn())}>Login with Google</button>`
       }}
 
   _listTemplate(){
-    if(this.list.isLoading){
-      if(this.user.auth2){
-        store.dispatch(listFetch('1vcrEWntFMeBdJyRoOArepg-j8G7ZkCln', this.provider.providerName))
-      }
+    if(this.list.ISLOADING){
       return html`<spinner-round></spinner-round>`
     } else {
       return this.list.files.map(file => 
@@ -61,10 +60,7 @@ class ProfileView extends connect(store)(LitElement) {
           color: #333
         }
       </style>
-      <h1 class="title">${this.user.auth2 ? `Hi ${this.user.auth2.currentUser.get().getBasicProfile().getGivenName()},` : `...`}</h1>
-      <h2 class="center">YOUR SETS</h2>
-      <hr>
-      ${this._listTemplate()}`
+      ${this._template()}`
   }
 }
 

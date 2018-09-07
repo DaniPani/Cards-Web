@@ -3,10 +3,10 @@ import {
 } from '../actions/user-actions'
 
 
-export default function (state = {auth2 : false}, action) {
+export default function (state = {ISLOGGEDIN: false}, action) {
     switch (action.type) {
         case USERSIGNEDIN:
-                return Object.assign({}, {auth2:action.payload.auth})
+                return Object.assign({}, action.payload, {ISLOGGEDIN: true})
 
         default:
             return Object.assign({}, state)

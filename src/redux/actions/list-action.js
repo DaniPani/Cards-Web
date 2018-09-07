@@ -1,12 +1,3 @@
-export function listFetch(folderId, provider) {
-  return async dispatch => {
-    switch(provider){
-      case 'GOOGLE':
-        dispatch(listFetchDrive(folderId))
-    }
-  }
-}
-
 export function listFetchDrive(folderId) {
   return async dispatch => {
       let response = await gapi.client.drive.files.list({

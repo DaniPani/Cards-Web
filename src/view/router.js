@@ -24,9 +24,6 @@ class CardRouter extends LitElement {
       case "/":
         import('./home-view')
         return html`<home-view></home-view>`
-
-      default:
-        return html`<auto-auth></auto-auth>`
     }
   }
 }
