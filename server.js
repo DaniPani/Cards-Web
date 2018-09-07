@@ -8,13 +8,12 @@ const server = Hapi.server({
     host: 'localhost',
     routes: {
         files: {
-            relativeTo: Path.join(__dirname, 'build/development/')
+            relativeTo: Path.join(__dirname, 'build/default/')
         }
     }
 })
 
 const init = async () => {
-
     await server.register(require('inert'))
 
     await server.register(require('bell'))
@@ -24,6 +23,14 @@ const init = async () => {
         path: '/{param*}',
         handler: {
             file: 'index.html'
+        }
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/config.js',
+        handler: {
+            file: 'config.js'
         }
     });
 
