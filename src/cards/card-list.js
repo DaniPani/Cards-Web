@@ -4,7 +4,7 @@ class CardList extends LitElement {
 
   static get properties() { return { cards: Array }}
 
-  _render({cards = []}) {
+  render() {    
     return html `
     <style>
       .card {
@@ -16,7 +16,7 @@ class CardList extends LitElement {
         margin-right: var(--card-margin-right)
       }
   </style>
-    ${cards.map(card => html`<div class="card"><h1>${card[0]}</h1><hr><h1>${card[1]}</h1></div>`)}`
+    ${this.cards.map(card => html`<div class="card"><h1>${card[0]}</h1><hr><h1>${card[1]}</h1></div>`)}`
   }
 
 }
