@@ -20,7 +20,6 @@ class SetView extends connect(store)(LitElement) {
   }
   
   render() {
-    debugger
     return html`
       <style>
         .title {
