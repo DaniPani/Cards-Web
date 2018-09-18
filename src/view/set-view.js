@@ -8,33 +8,19 @@ import '../components/card-button'
 
 import '../cards/card-list'
 
+import { cardsReset } from '../redux/actions/card-actions';
+
 class SetView extends connect(store)(LitElement) {
 
   static get properties() { return {cards: Object}}
 
   // Redux
   _stateChanged(state) {
-    if(!state.cards.FILESELECTED){
-      return window.location = '/profile/'
-    }
     this.cards = state.cards
-  }
-
-
-  _template() {
-    if(this.cards.ISLOADING){
-      return html`<spinner-round></spinner-round>`
-    }
-
-    return html`
-        <h2 class="title">${this.cards.title}</h2>
-        <card-button href="/profile/">BACK</card-button>
-        <card-button class="edit" target="_blank" href="${this.cards.editUrl}">EDIT</card-button>
-        <card-button>STUDY</card-button>
-        ${this.cards.words.length? html`<card-list .cards=${this.cards.words}></card-list>` : html`<h3 class="center">- Oops there are no cards -</h3>`}`
   }
   
   render() {
+    debugger
     return html`
       <style>
         .title {
@@ -50,7 +36,14 @@ class SetView extends connect(store)(LitElement) {
           text-align: center
         }
       </style>
-      ${this._template()}`
+      ${this.cards.ISLOADING ? html`<spinner-round></spinner-round>` :
+      html`
+        <h2 class="title">${this.cards.sets[this.cards.idSelected].title}</h2>
+        <card-button href="/profile/" @click=${() => store.dispatch(cardsReset())}>BACK</card-button>
+        <card-button class="edit" target="_blank" href="${this.cards.sets[this.cards.idSelected].editUrl}">EDIT</card-button>
+        <card-button>STUDY</card-button>
+        ${this.cards.sets[this.cards.idSelected].words.length? html`<card-list .cards="${this.cards.sets[this.cards.idSelected].words}"></card-list>` : html`<h3 class="center">- Oops there are no cards -</h3>`}`
+        }`
   }
 }
 

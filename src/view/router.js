@@ -14,6 +14,9 @@ class CardRouter extends LitElement {
   render() {
     switch (this.location) {
       case "/set/":
+        if(!window.FILESELECTED){
+          return window.location = '/profile/'
+        }
         import('./set-view')
         return html`<set-view></set-view>`
 
