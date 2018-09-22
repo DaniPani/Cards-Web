@@ -9,7 +9,6 @@ import {
 import store from '../redux/store'
 
 import {
-  cardsFetch,
   cardsChosed
 } from '../redux/actions/card-actions'
 import {
@@ -18,8 +17,6 @@ import {
 } from '../redux/actions/user-actions'
 
 import '../components/spinner-round'
-
-let requestSets = new Set()
 
 class ProfileView extends connect(store)(LitElement) {
 
@@ -61,13 +58,7 @@ class ProfileView extends connect(store)(LitElement) {
     if (this.list.ISLOADING) {
       return html `<spinner-round></spinner-round>`
     } else {
-      return this.list.files.map(file => {
-        if (!requestSets.has(file.id)) {
-          store.dispatch(cardsFetch(file.name, file.id, this.user.provider));
-          requestSets.add(file.id)
-        }
-        return html `<h2><a href="/set/" @click=${e => store.dispatch(cardsChosed(file.id))}>${file.name}</a></h2><hr>`
-      })
+      return this.list.files.map(file =>html `<h2><a href="/set/" @click=${e => store.dispatch(cardsChosed(file.id))}>${file.name}</a></h2><hr>`)
     }
   }
 

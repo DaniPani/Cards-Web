@@ -1,3 +1,5 @@
+import{cardsFetch} from './card-actions'
+
 export function listFetchDrive(folderId) {
   return async dispatch => {
       let response = await gapi.client.drive.files.list({
@@ -5,6 +7,7 @@ export function listFetchDrive(folderId) {
       })
       if(!response.result.incompleteSearch){
         await dispatch(listLoaded(response.result.files))
+        response.result.files.forEach(e => dispatch(cardsFetch(e.name, e.id, 'GOOGLE')))
       }
   }
 }
