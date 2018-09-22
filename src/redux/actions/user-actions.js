@@ -60,7 +60,7 @@ const googleSignedIn = () => async dispatch => {
     name: GoogleAuth.currentUser.get().getBasicProfile().getGivenName(),
     provider: 'GOOGLE'
   }))
-  return dispatch(listFetchDrive('1vcrEWntFMeBdJyRoOArepg-j8G7ZkCln'))
+  return dispatch(listFetchDrive('Cards'))
 }
 
 const loadGapi = _ => {
