@@ -10,9 +10,19 @@
 
   <link rel="manifest" href="/manifest.json">
 
+  <link rel="preconnect" href="https://apis.google.com">
+  <link>
+  <link rel="preconnect" href="https://accounts.google.com">
+  <link>
+
+  <link rel="dns-prefetch" href="https://apis.google.com">
+  <link>
+  <link rel="dns-prefetch" href="https://accounts.google.com">
+  <link>
+
   <script type="module" src="/src/view/router.js"></script>
 
-  <script> 
+  <script>
     window.process = {
       env: {
         NODE_ENV: 'production'
