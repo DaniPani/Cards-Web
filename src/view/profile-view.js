@@ -36,7 +36,6 @@ class ProfileView extends connect(store)(LitElement) {
   _stateChanged(state) {
     this.user = state.user
     this.list = state.list
-    this.cards = state.cards
   }
 
   async _template() {
@@ -58,7 +57,7 @@ class ProfileView extends connect(store)(LitElement) {
     if (this.list.ISLOADING) {
       return html `<spinner-round></spinner-round>`
     } else {
-      return this.list.files.map(file =>html `<h2><a href="/set/" @click=${e => store.dispatch(cardsChosed(file.id))}>${file.name}</a></h2><hr>`)
+      return this.list.files.map(file => html `<h2><a href="/set/" @click=${e => store.dispatch(cardsChosed(file.id))}>${file.name}</a></h2><hr>`)
     }
   }
 
